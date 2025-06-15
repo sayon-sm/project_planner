@@ -1,27 +1,33 @@
-const activeProjects =
-  document.getElementById('active-projects').lastElementChild;
-const finishedProjects =
-  document.getElementById('finished-projects').lastElementChild;
-const finishCourse = document.getElementById('p1');
-const MoreInfoFC = finishCourse.querySelector('button');
-const finishFC = finishCourse.lastElementChild;
-const buyGroceries = document.getElementById('p2');
-const MoreInfoBG = buyGroceries.querySelector('button');
-const finishBG = buyGroceries.lastElementChild;
-const bookHotel = document.getElementById('p3');
-const MoreInfoBH = bookHotel.querySelector('button');
-const finishBH = bookHotel.lastElementChild;
+class ActiveProjects {
+  activeProjects = document.getElementById('active-projects').lastElementChild;
+  finishCourse = document.getElementById('p1');
+  MoreInfoFC = this.finishCourse.querySelector('button');
+  finishFC = this.finishCourse.lastElementChild;
+  buyGroceries = document.getElementById('p2');
+  MoreInfoBG = this.buyGroceries.querySelector('button');
+  finishBG = this.buyGroceries.lastElementChild;
+}
+class FinishedProjects {
+  finishedProjects =
+    document.getElementById('finished-projects').lastElementChild;
+  bookHotel = document.getElementById('p3');
+  MoreInfoBH = this.bookHotel.querySelector('button');
+  finishBH = this.bookHotel.lastElementChild;
+}
+
+const active = new ActiveProjects();
+const finish = new FinishedProjects();
 
 // console.log(
-//   activeProjects,
-//   finishedProjects,
-//   finishCourse,
-//   MoreInfoFC,
-//   finishFC,
-//   buyGroceries,
-//   MoreInfoBG,
-//   finishBG,
-//   bookHotel,
-//   MoreInfoBH,
-//   finishBH
+//   active.activeProjects,
+//   finish.finishedProjects,
+//   active.finishCourse,
+//   active.MoreInfoFC,
+//   active.finishFC,
+//   active.buyGroceries,
+//   active.MoreInfoBG,
+//   active.finishBG,
+//   finish.bookHotel,
+//   finish.MoreInfoBH,
+//   finish.finishBH
 // );
