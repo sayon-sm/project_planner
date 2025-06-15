@@ -12,16 +12,16 @@ const bookHotel = document.getElementById('p3');
 const MoreInfoBH = bookHotel.querySelector('button');
 const finishBH = bookHotel.lastElementChild;
 
-console.log(
-  activeProjects,
-  finishedProjects,
-  finishCourse,
-  MoreInfoFC,
-  finishFC,
-  buyGroceries,
-  MoreInfoBG,
-  finishBG,
-  bookHotel,
-  MoreInfoBH,
-  finishBH
-);
+// console.log(
+//   activeProjects,
+//   finishedProjects,
+//   finishCourse,
+//   MoreInfoFC,
+//   finishFC,
+//   buyGroceries,
+//   MoreInfoBG,
+//   finishBG,
+//   bookHotel,
+//   MoreInfoBH,
+//   finishBH
+// );
