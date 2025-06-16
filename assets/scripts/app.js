@@ -18,16 +18,19 @@ class FinishedProjects {
 const active = new ActiveProjects();
 const finish = new FinishedProjects();
 
-// console.log(
-//   active.activeProjects,
-//   finish.finishedProjects,
-//   active.finishCourse,
-//   active.MoreInfoFC,
-//   active.finishFC,
-//   active.buyGroceries,
-//   active.MoreInfoBG,
-//   active.finishBG,
-//   finish.bookHotel,
-//   finish.MoreInfoBH,
-//   finish.finishBH
-// );
+active.finishFC.addEventListener('click', remove);
+active.MoreInfoFC.addEventListener('click', moreInfo);
+active.finishBG.addEventListener('click', remove);
+active.MoreInfoBG.addEventListener('click', moreInfo);
+finish.finishBH.addEventListener('click', remove);
+finish.MoreInfoBH.addEventListener('click', moreInfo);
+
+function remove() {
+  this.parentElement.remove();
+  console.log(this);
+}
+
+function moreInfo() {
+  alert(this.parentElement.dataset.extraInfo);
+  console.log(this);
+}
