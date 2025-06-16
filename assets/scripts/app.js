@@ -26,7 +26,8 @@ finish.finishBH.addEventListener('click', remove);
 finish.MoreInfoBH.addEventListener('click', moreInfo);
 
 function remove() {
-  this.parentElement.remove();
+  finish.finishedProjects.appendChild(this.parentElement);
+  this.textContent = 'Activate';
   console.log(this);
 }
 
