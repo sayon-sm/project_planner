@@ -15,23 +15,29 @@ class FinishedProjects {
   finishBH = this.bookHotel.lastElementChild;
 }
 
-const active = new ActiveProjects();
-const finish = new FinishedProjects();
+const activated = new ActiveProjects();
+const finished = new FinishedProjects();
 
-active.finishFC.addEventListener('click', remove);
-active.MoreInfoFC.addEventListener('click', moreInfo);
-active.finishBG.addEventListener('click', remove);
-active.MoreInfoBG.addEventListener('click', moreInfo);
-finish.finishBH.addEventListener('click', remove);
-finish.MoreInfoBH.addEventListener('click', moreInfo);
+activated.finishFC.addEventListener('click', finish);
+activated.MoreInfoFC.addEventListener('click', moreInfo);
+activated.finishBG.addEventListener('click', finish);
+activated.MoreInfoBG.addEventListener('click', moreInfo);
+finished.finishBH.addEventListener('click', active);
+finished.MoreInfoBH.addEventListener('click', moreInfo);
 
-function remove() {
-  finish.finishedProjects.appendChild(this.parentElement);
+function finish() {
+  finished.finishedProjects.appendChild(this.parentElement);
   this.textContent = 'Activate';
   console.log(this);
 }
 
 function moreInfo() {
   alert(this.parentElement.dataset.extraInfo);
+  console.log(this);
+}
+
+function active() {
+  activated.activeProjects.appendChild(this.parentElement);
+  this.textContent = 'Finish';
   console.log(this);
 }
