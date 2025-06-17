@@ -28,6 +28,8 @@ finished.MoreInfoBH.addEventListener('click', moreInfo);
 function finish() {
   finished.finishedProjects.appendChild(this.parentElement);
   this.textContent = 'Activate';
+  this.removeEventListener('click', finish);
+  this.addEventListener('click', active);
   console.log(this);
 }
 
@@ -39,5 +41,7 @@ function moreInfo() {
 function active() {
   activated.activeProjects.appendChild(this.parentElement);
   this.textContent = 'Finish';
+  this.removeEventListner('click', active);
+  this.addEventListener('click', finish);
   console.log(this);
 }
