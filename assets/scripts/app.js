@@ -1,11 +1,27 @@
 class ActiveProjects {
   activeProjects = document.getElementById('active-projects').lastElementChild;
-  finishCourse = document.getElementById('p1');
-  MoreInfoFC = this.finishCourse.querySelector('button');
-  finishFC = this.finishCourse.lastElementChild;
-  buyGroceries = document.getElementById('p2');
-  MoreInfoBG = this.buyGroceries.querySelector('button');
-  finishBG = this.buyGroceries.lastElementChild;
+  constructor() {
+    this.components = [
+      {
+        finishCouse: document.getElementById('p1'),
+        MoreInfo: document.getElementById('p1').querySelector('button'),
+        finish: document.getElementById('p1').lastElementChild,
+      },
+      {
+        buyGroceries: document.getElementById('p2'),
+        moreInfo: document.getElementById('p2').querySelector('button'),
+        finish: document.getElementById('p2').lastElementChild,
+      },
+    ];
+  }
+
+  finish() {
+    finished.finishedProjects.appendChild(this.parentElement);
+    this.textContent = 'Activate';
+    this.removeEventListener('click', finish);
+    this.addEventListener('click', active);
+    console.log(this);
+  }
 }
 class FinishedProjects {
   finishedProjects =
@@ -41,7 +57,7 @@ function moreInfo() {
 function active() {
   activated.activeProjects.appendChild(this.parentElement);
   this.textContent = 'Finish';
-  this.removeEventListner('click', active);
+  this.removeEventListener('click', active);
   this.addEventListener('click', finish);
   console.log(this);
 }
