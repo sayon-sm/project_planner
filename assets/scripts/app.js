@@ -20,7 +20,6 @@ class ActiveProjects {
     this.textContent = 'Activate';
     this.removeEventListener('click', finish);
     this.addEventListener('click', active);
-    console.log(this);
   }
 }
 class FinishedProjects {
@@ -46,12 +45,10 @@ function finish() {
   this.textContent = 'Activate';
   this.removeEventListener('click', finish);
   this.addEventListener('click', active);
-  console.log(this);
 }
 
 function moreInfo() {
   alert(this.parentElement.dataset.extraInfo);
-  console.log(this);
 }
 
 function active() {
@@ -59,5 +56,4 @@ function active() {
   this.textContent = 'Finish';
   this.removeEventListener('click', active);
   this.addEventListener('click', finish);
-  console.log(this);
 }
