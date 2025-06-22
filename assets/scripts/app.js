@@ -67,17 +67,24 @@ class app {
   }
 
   static finish() {
-    alert('finished ☠️');
+    console.log(this);
+    app.finished.finishedProjects.appendChild(this.parentElement);
+    this.textContent = 'Activate';
+    this.removeEventListener('click', app.finish);
+    this.addEventListener('click', app.active);
   }
 
   static active() {
-    alert('activated 💪');
+    console.log(this);
+    app.activated.activeProjects.appendChild(this.parentElement);
+    this.textContent = 'Finish';
+    this.removeEventListener('click', app.active);
+    this.addEventListener('click', app.finish);
   }
 }
 
 // const func = new app();
 // func.button();
-
 app.button();
 
 // activated.finishFC.addEventListener('click', finish);
