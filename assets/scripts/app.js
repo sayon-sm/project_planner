@@ -25,28 +25,34 @@ class app {
     for (const projects in app) {
       // console.log(this[projects]);
       for (const arr in this[projects]) {
-        let p = this[projects];
+        const p = this[projects];
         // console.log(p[arr]);
         if (Array.isArray(p[arr])) {
           // console.log(p[arr]);
           for (const idx of p[arr]) {
             // console.log(idx);
             for (const key in idx) {
-              // console.log(idx[key]);
+              console.log(idx[key], key);
               for (const k in idx[key]) {
-                let q = idx[key];
-                let button = q[k];
+                const q = idx[key];
+                const button = q[k];
                 // console.log(q[k], k);
                 if (k === 'moreInfoButton') {
                   // console.log(k);
                   button.addEventListener('click', this.moreInfo);
                 } else if (k === 'button') {
-                  let text = button.textContent;
-                  console.log(text);
+                  const text = button.textContent;
+                  // console.log(text);
                   if (text === 'Finish') {
-                    button.addEventListener('click', this.finish);
+                    button.addEventListener(
+                      'click',
+                      this.finish.bind(button, key)
+                    );
                   } else if (text === 'Activate') {
-                    button.addEventListener('click', this.active);
+                    button.addEventListener(
+                      'click',
+                      this.active.bind(button, key)
+                    );
                   }
                 }
               }
@@ -66,16 +72,47 @@ class app {
     alert(this.parentElement.dataset.extraInfo);
   }
 
-  static finish() {
-    console.log(this);
+  static finish(key) {
+    const index = app.activated.componentList.findIndex(
+      (Projects, idx, componentList) => {
+        let boolean;
+        for (const id in Projects) {
+          if (id === key) {
+            boolean = true;
+          }
+        }
+        return boolean;
+      }
+    );
+    app.activated.componentList.splice(index, 1);
+    if (app.activated.componentList.length === 0) {
+      app.activated.activeProjects.remove();
+    }
+    // console.log(index, this, key);
+    // console.log(app.activated.componentList);
     app.finished.finishedProjects.appendChild(this.parentElement);
     this.textContent = 'Activate';
     this.removeEventListener('click', app.finish);
     this.addEventListener('click', app.active);
   }
 
-  static active() {
-    console.log(this);
+  static active(key) {
+    const index = app.finished.componentList.findIndex(
+      (Projects, idx, componentList) => {
+        let boolean;
+        for (const id in Projects) {
+          if (id === key) {
+            boolean = true;
+          }
+        }
+        return boolean;
+      }
+    );
+    app.finished.componentList.splice(index, 1);
+    if (app.finished.componentList.length === 0) {
+      app.finished.finishedProjects.remove();
+    }
+    // console.log(this, key);
     app.activated.activeProjects.appendChild(this.parentElement);
     this.textContent = 'Finish';
     this.removeEventListener('click', app.active);
