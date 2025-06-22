@@ -60,26 +60,26 @@ class app {
   }
 
   static finish(key) {
-    const index = app.activated.componentList.findIndex(
-      (Projects, idx, componentList) => {
-        let boolean;
-        for (const id in Projects) {
-          if (id === key) {
-            boolean = true;
-          }
-        }
-        return boolean;
-      }
-    );
-    app.activated.componentList.splice(index, 1);
-    if (app.activated.componentList.length === 0) {
-      app.activated.activeProjects.remove();
-    }
-    if (app.finished.componentList.length === 0) {
-      app.finished.finishedProjects.previousElementSibling.after(
-        app.finished.finishedProjects
-      );
-    }
+    // const index = app.activated.componentList.findIndex(
+    //   (Projects, idx, componentList) => {
+    //     let boolean;
+    //     for (const id in Projects) {
+    //       if (id === key) {
+    //         boolean = true;
+    //       }
+    //     }
+    //     return boolean;
+    //   }
+    // );
+    // app.activated.componentList.splice(index, 1);
+    // if (app.activated.componentList.length === 0) {
+    //   app.activated.activeProjects.remove();
+    // }
+    // if (app.finished.componentList.length === 0) {
+    //   app.finished.finishedProjects.previousElementSibling.after(
+    //     app.finished.finishedProjects
+    //   );
+    // }
     app.finished.finishedProjects.appendChild(this.parentElement);
     this.textContent = 'Activate';
     this.removeEventListener('click', app.finish);
@@ -87,26 +87,26 @@ class app {
   }
 
   static active(key) {
-    const index = app.finished.componentList.findIndex(
-      (Projects, idx, componentList) => {
-        let boolean;
-        for (const id in Projects) {
-          if (id === key) {
-            boolean = true;
-          }
-        }
-        return boolean;
-      }
-    );
-    app.finished.componentList.splice(index, 1);
-    if (app.finished.componentList.length === 0) {
-      app.finished.finishedProjects.remove();
-    }
-    if (app.activated.componentList.length === 0) {
-      app.activated.activeProjects.previousElementSibling.after(
-        app.activated.activeProjects
-      );
-    }
+    // const index = app.finished.componentList.findIndex(
+    //   (Projects, idx, componentList) => {
+    //     let boolean;
+    //     for (const id in Projects) {
+    //       if (id === key) {
+    //         boolean = true;
+    //       }
+    //     }
+    //     return boolean;
+    //   }
+    // );
+    // app.finished.componentList.splice(index, 1);
+    // if (app.finished.componentList.length === 0) {
+    //   app.finished.finishedProjects.remove();
+    // }
+    // if (app.activated.componentList.length === 0) {
+    //   app.activated.activeProjects.previousElementSibling.after(
+    //     app.activated.activeProjects
+    //   );
+    // }
     app.activated.activeProjects.appendChild(this.parentElement);
     this.textContent = 'Finish';
     this.removeEventListener('click', app.active);
