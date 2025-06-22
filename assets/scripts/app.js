@@ -1,59 +1,72 @@
+class Projects {
+  constructor(id) {
+    this[id] = {
+      element: document.getElementById(id),
+      moreInfoButton: document.getElementById(id).querySelector('button'),
+      button: document.getElementById(id).lastElementChild,
+    };
+  }
+}
 class ActiveProjects {
   activeProjects = document.getElementById('active-projects').lastElementChild;
-  constructor() {
-    this.components = [
-      {
-        finishCouse: document.getElementById('p1'),
-        MoreInfo: document.getElementById('p1').querySelector('button'),
-        finish: document.getElementById('p1').lastElementChild,
-      },
-      {
-        buyGroceries: document.getElementById('p2'),
-        moreInfo: document.getElementById('p2').querySelector('button'),
-        finish: document.getElementById('p2').lastElementChild,
-      },
-    ];
-  }
-
-  finish() {
-    finished.finishedProjects.appendChild(this.parentElement);
-    this.textContent = 'Activate';
-    this.removeEventListener('click', finish);
-    this.addEventListener('click', active);
-  }
+  componentList = [new Projects('p1'), new Projects('p2')];
 }
 class FinishedProjects {
   finishedProjects =
     document.getElementById('finished-projects').lastElementChild;
-  bookHotel = document.getElementById('p3');
-  MoreInfoBH = this.bookHotel.querySelector('button');
-  finishBH = this.bookHotel.lastElementChild;
+  componentList = [new Projects('p3')];
 }
 
-const activated = new ActiveProjects();
-const finished = new FinishedProjects();
+class app {
+  static activated = new ActiveProjects();
+  static finished = new FinishedProjects();
 
-activated.finishFC.addEventListener('click', finish);
-activated.MoreInfoFC.addEventListener('click', moreInfo);
-activated.finishBG.addEventListener('click', finish);
-activated.MoreInfoBG.addEventListener('click', moreInfo);
-finished.finishBH.addEventListener('click', active);
-finished.MoreInfoBH.addEventListener('click', moreInfo);
+  static button() {
+    for (const projects in app) {
+      // console.log(this[projects]);
+      for (const arr in this[projects]) {
+        let p = this[projects];
+        // console.log(p[arr]);
+        if (Array.isArray(p[arr])) {
+          // console.log(p[arr]);
+          for (const idx of p[arr]) {
+            // console.log(idx);
+            for (const key in idx) {
+              // console.log(idx[key]);
+              for (const k in idx[key]) {
+                let q = idx[key];
+                let button = q[k];
+                // console.log(q[k], k);
+                if (k === 'moreInfoButton') {
+                  // console.log(k);
+                  button.addEventListener('click', this.abc);
+                }
+              }
+              // console.log(key);
+              // }
+              //         idx[key].addEventListner('click', this.abc);
+              //         console.log(idx, key, idx[key]);
+              //         alert('hi');
+            }
+          }
+        }
+      }
+    }
+  }
 
-function finish() {
-  finished.finishedProjects.appendChild(this.parentElement);
-  this.textContent = 'Activate';
-  this.removeEventListener('click', finish);
-  this.addEventListener('click', active);
+  static abc() {
+    alert('works🙌');
+  }
 }
 
-function moreInfo() {
-  alert(this.parentElement.dataset.extraInfo);
-}
+// const func = new app();
+// func.button();
 
-function active() {
-  activated.activeProjects.appendChild(this.parentElement);
-  this.textContent = 'Finish';
-  this.removeEventListener('click', active);
-  this.addEventListener('click', finish);
-}
+app.button();
+
+// activated.finishFC.addEventListener('click', finish);
+// activated.MoreInfoFC.addEventListener('click', moreInfo);
+// activated.finishBG.addEventListener('click', finish);
+// activated.MoreInfoBG.addEventListener('click', moreInfo);
+// finished.finishBH.addEventListener('click', active);
+// finished.MoreInfoBH.addEventListener('click', moreInfo);
