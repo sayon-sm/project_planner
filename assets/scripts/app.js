@@ -39,7 +39,15 @@ class app {
                 // console.log(q[k], k);
                 if (k === 'moreInfoButton') {
                   // console.log(k);
-                  button.addEventListener('click', this.abc);
+                  button.addEventListener('click', this.moreInfo);
+                } else if (k === 'button') {
+                  let text = button.textContent;
+                  console.log(text);
+                  if (text === 'Finish') {
+                    button.addEventListener('click', this.finish);
+                  } else if (text === 'Activate') {
+                    button.addEventListener('click', this.active);
+                  }
                 }
               }
               // console.log(key);
@@ -54,8 +62,16 @@ class app {
     }
   }
 
-  static abc() {
-    alert('works🙌');
+  static moreInfo() {
+    alert(this.parentElement.dataset.extraInfo);
+  }
+
+  static finish() {
+    alert('finished ☠️');
+  }
+
+  static active() {
+    alert('activated 💪');
   }
 }
 
