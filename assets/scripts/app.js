@@ -23,26 +23,18 @@ class app {
 
   static button() {
     for (const projects in app) {
-      // console.log(this[projects]);
       for (const arr in this[projects]) {
         const p = this[projects];
-        // console.log(p[arr]);
         if (Array.isArray(p[arr])) {
-          // console.log(p[arr]);
           for (const idx of p[arr]) {
-            // console.log(idx);
             for (const key in idx) {
-              console.log(idx[key], key);
               for (const k in idx[key]) {
                 const q = idx[key];
                 const button = q[k];
-                // console.log(q[k], k);
                 if (k === 'moreInfoButton') {
-                  // console.log(k);
                   button.addEventListener('click', this.moreInfo);
                 } else if (k === 'button') {
                   const text = button.textContent;
-                  // console.log(text);
                   if (text === 'Finish') {
                     button.addEventListener(
                       'click',
@@ -56,11 +48,6 @@ class app {
                   }
                 }
               }
-              // console.log(key);
-              // }
-              //         idx[key].addEventListner('click', this.abc);
-              //         console.log(idx, key, idx[key]);
-              //         alert('hi');
             }
           }
         }
@@ -88,8 +75,11 @@ class app {
     if (app.activated.componentList.length === 0) {
       app.activated.activeProjects.remove();
     }
-    // console.log(index, this, key);
-    // console.log(app.activated.componentList);
+    if (app.finished.componentList.length === 0) {
+      app.finished.finishedProjects.previousElementSibling.after(
+        app.finished.finishedProjects
+      );
+    }
     app.finished.finishedProjects.appendChild(this.parentElement);
     this.textContent = 'Activate';
     this.removeEventListener('click', app.finish);
@@ -112,7 +102,11 @@ class app {
     if (app.finished.componentList.length === 0) {
       app.finished.finishedProjects.remove();
     }
-    // console.log(this, key);
+    if (app.activated.componentList.length === 0) {
+      app.activated.activeProjects.previousElementSibling.after(
+        app.activated.activeProjects
+      );
+    }
     app.activated.activeProjects.appendChild(this.parentElement);
     this.textContent = 'Finish';
     this.removeEventListener('click', app.active);
@@ -120,13 +114,4 @@ class app {
   }
 }
 
-// const func = new app();
-// func.button();
 app.button();
-
-// activated.finishFC.addEventListener('click', finish);
-// activated.MoreInfoFC.addEventListener('click', moreInfo);
-// activated.finishBG.addEventListener('click', finish);
-// activated.MoreInfoBG.addEventListener('click', moreInfo);
-// finished.finishBH.addEventListener('click', active);
-// finished.MoreInfoBH.addEventListener('click', moreInfo);
