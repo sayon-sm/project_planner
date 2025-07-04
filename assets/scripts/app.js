@@ -57,7 +57,12 @@ class app {
   }
 
   static moreInfo() {
-    alert(this.parentElement.dataset.extraInfo);
+    const tooltip = document.createElement('div');
+    tooltip.textContent = this.parentElement.dataset.extraInfo;
+    tooltip.classList.add('card');
+    const list = this.closest('ul');
+    list.prepend(tooltip);
+    // alert(this.parentElement.dataset.extraInfo);
   }
 
   static finish(key) {
